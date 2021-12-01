@@ -1,0 +1,114 @@
+<div class="bg-light">
+  <div class="d-flex justify-content-center connecte-page">
+    <div class="connecte-page-2 p-5 m-5 w-50 bg-white">
+      <h3 class="text-center">Identifiez-vous</h3>
+      <hr />
+      <div class="d-flex justify-content-center">
+        <img [src]="imgURL" class="rounded-circle image" alt="..." />
+      </div>
+      <form [formGroup]="userForm" (ngSubmit)="register()">
+        <div>
+          <label for="name"><b>Nom:</b> </label>
+          <input
+            class="form-control"
+            type="name"
+            placeholder="Votre nom"
+            formControlName="nom"
+          />
+          <div
+            *ngIf="
+              userForm.controls.nom.invalid && userForm.controls.nom.touched
+            "
+          >
+            <small
+              *ngIf="userForm.controls.nom.errors?.required"
+              class="text-danger"
+              >Le nom est obligatoire.</small
+            >
+          </div>
+        </div>
+        <div>
+          <label for="name"><b>Prenom: </b></label>
+          <input
+            class="form-control"
+            type="name"
+            placeholder="Votre presnom"
+            formControlName="prenom"
+          />
+          <div
+            *ngIf="
+              userForm.controls.prenom.invalid &&
+              userForm.controls.prenom.touched
+            "
+          >
+            <small
+              *ngIf="userForm.controls.prenom.errors?.required"
+              class="text-danger"
+              >Le prénom est obligatoire.</small
+            >
+          </div>
+        </div>
+        <div>
+          <label for="name"><b>E-mail: </b></label>
+          <input
+            class="form-control"
+            type="e-mail"
+            placeholder="Votre E-mail"
+            formControlName="email"
+          />
+          <div
+            *ngIf="
+              userForm.controls.email.invalid && userForm.controls.email.touched
+            "
+          >
+            <small
+              *ngIf="userForm.controls.email.errors?.pattern"
+              class="text-danger"
+              >Veuillez entrer une adresse e-mail valide</small
+            >
+            <small
+              *ngIf="userForm.controls.email.errors?.required"
+              class="text-danger"
+              >Le E-mail est obligatoire.</small
+            >
+          </div>
+        </div>
+        <div>
+          <label for="name"><b>Mot de passe: </b></label>
+          <input
+            class="form-control"
+            type="password"
+            placeholder="Votre mot de passe"
+            formControlName="password"
+          />
+          <div
+            *ngIf="
+              userForm.controls.password.invalid &&
+              userForm.controls.password.touched
+            "
+          >
+            <small
+              *ngIf="userForm.controls.password.errors?.required"
+              class="text-danger"
+              >Le Mot de passe est obligatoire.</small
+            >
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="formFile" class="form-label">
+            <b>Photo de profil</b>
+          </label>
+          <input
+            class="form-control d-flex justify-content-center"
+            type="file"
+            id="formFile"
+            (change)="onFileChanged($event)"
+            #fileInput
+          />
+        </div>
+        <button class="btn btn-outline-success mt-4 w-100">S'inscrire</button>
+      </form>
+    </div>
+  </div>
+</div>

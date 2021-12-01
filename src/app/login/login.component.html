@@ -1,0 +1,64 @@
+<div class="bg-light">
+  <div class="d-flex justify-content-center connecte-page">
+    <div class="connecte-page-2 p-5 m-5 w-50 bg-white">
+      <h3 class="text-center">Identifiez-vous</h3>
+      <hr />
+      <form [formGroup]="conectedUser" (ngSubmit)="login()">
+        <div>
+          <label for="e-mail">E-mail:</label>
+          <input
+            class="form-control"
+            type="email"
+            placeholder="Votre e-mail"
+            formControlName="email"
+          />
+          <div
+            *ngIf="
+              conectedUser.controls.email.invalid &&
+              conectedUser.controls.email.touched
+            "
+          >
+            <small
+              *ngIf="conectedUser.controls.email.errors?.pattern"
+              class="text-danger"
+              >Veuillez entrer une adresse e-mail valide</small
+            >
+            <small
+              *ngIf="conectedUser.controls.email.errors?.required"
+              class="text-danger"
+              >Le E-mail est obligatoire.</small
+            >
+          </div>
+        </div>
+        <div>
+          <label for="password">Mot de passe:</label>
+          <input
+            class="form-control"
+            type="password"
+            placeholder="Votre mot de passe"
+            formControlName="password"
+          />
+          <div
+            *ngIf="
+              conectedUser.controls.password.invalid &&
+              conectedUser.controls.password.touched
+            "
+          >
+            <small
+              *ngIf="conectedUser.controls.password.errors?.required"
+              class="text-danger"
+              >Le Mot de passe est obligatoire.</small
+            >
+          </div>
+        </div>
+
+        <button class="btn btn-outline-success mt-4 w-100" type="submit">
+          connexion
+        </button>
+        <div class="text-right mt-4 text-center">
+          <a class="oublier" routerLink="/register">Crée un compte</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

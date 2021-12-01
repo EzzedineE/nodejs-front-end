@@ -1,0 +1,78 @@
+<div class="text-center container mt-5">
+  <main class="form-signin">
+    <div><i class="fas fa-person-booth text-warning fa-5x"></i></div>
+    <h1 class="h3 my-5 fw-normal text-success">Sondage</h1>
+    <div *ngFor="let sondage of sondages; let i = index">
+      <div class="form-floating my-3">
+        <div class="ml-3 container bg-white">
+          <h1 class="text-danger">{{ sondage.titre }}</h1>
+          <!-- <h3>Oui : {{ sondage.oui }}</h3>
+          <h3>Non : {{ sondage.non }}</h3>
+          <h3>
+            tauxOui :
+            {{ (sondage.oui / (sondage.oui + sondage.non)) * 100 | number }}%
+          </h3> -->
+        </div>
+        <div class="ml-3 container bg-white">
+          <p class="text-start">{{ sondage.description }}</p>
+        </div>
+        <div>
+          <div class="input-group mb-3">
+            <div class="input-group-text">
+              <input
+                (change)="reponseNon(i)"
+                [name]="i"
+                class="form-check-input mt-0"
+                type="radio"
+                value=""
+                aria-label="radio for following text input"
+              />
+            </div>
+            <div class="progress w-75">
+              <div
+                class="progress-bar progress-bar-striped bg-success"
+                role="progressbar"
+                style="width:
+                {{
+                  (sondage.oui / (sondage.oui + sondage.non)) * 100 | number
+                }}%"
+                aria-valuenow="25"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+              OUI
+              {{ (sondage.oui / (sondage.oui + sondage.non)) * 100 | number }}%
+            </div>
+          </div>
+
+          <div class="input-group mb-3">
+            <div class="input-group-text">
+              <input
+                (change)="reponseNon(i)"
+                [name]="i"
+                class="form-check-input mt-0"
+                type="radio"
+                value=""
+                aria-label="radio for following text input"
+              />
+            </div>
+            <div class="progress w-75">
+              <div
+                class="progress-bar progress-bar-striped bg-danger"
+                role="progressbar"
+                style="width: {{
+                  (sondage.non / (sondage.oui + sondage.non)) * 100 | number
+                }}%"
+              ></div>
+              NON
+              {{ (sondage.non / (sondage.oui + sondage.non)) * 100 | number }}%
+            </div>
+          </div>
+          <button class="btn btn-success" (click)="confirme(sondage._id, i)">
+            confirmer
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
